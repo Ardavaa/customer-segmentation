@@ -13,8 +13,8 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.success(
         "Cluster 0 (Green):\n"
-        "- Income: $40,000 - $70,000, with some outliers.\n"
-        "- Spending: $500 - $1,000; moderate engagement.\n"
+        "- Income: `$40,000` - `$70,000`, with some outliers.\n"
+        "- Spending: `$500` - `$1,000`; moderate engagement.\n"
         "- Age: Peaks around 50 years.\n"
         "\n "
         "\n "
@@ -23,8 +23,8 @@ with col1:
 with col2:
     st.warning(
         "Cluster 1 (Orange):\n"
-        "- Income: Above $70,000.\n"
-        "- Spending: $1,000 - $2,000; high engagement.\n"
+        "- Income: Above `$70,000`.\n"
+        "- Spending: `$1,000` - `$2,000`; high engagement.\n"
         "- Age: Peaks around 40-50 years.\n"
         "\n "
         "\n "
@@ -33,8 +33,8 @@ with col2:
 with col3:
     st.info(
         "Cluster 2 (Blue):\n"
-        "- Income: $0 - $40,000.\n"
-        "- Spending: Under $500; least spending.\n"
+        "- Income: `$0` - `$40,000`.\n"
+        "- Spending: Under `$500`; least spending.\n"
         "- Age: Broad range, with many under 40 years.\n"
         "\n "
         "\n "
