@@ -148,19 +148,46 @@ st.subheader('KMeans Clustering')
 st.markdown("For clustering, we'll be using KMeans Clustering. We'll determine the optimal number of clusters using the elbow method.")
 
 # determine optimal number of clusters using elbow method
+# wcss = []
+# for i in range(1, 11):
+#     kmeans = KMeans(n_clusters=i, random_state=0)
+#     kmeans.fit(pca_df)
+#     wcss.append(kmeans.inertia_)
+
+# # plot elbow method
+# fig_elbow = plt.figure()
+# plt.plot(range(1, 11), wcss, marker='o')
+# plt.title('Elbow Method for Optimal Number of Clusters')
+# plt.xlabel('Number of clusters')
+# plt.ylabel('WCSS')
+# st.pyplot(fig_elbow)
+
 wcss = []
 for i in range(1, 11):
     kmeans = KMeans(n_clusters=i, random_state=0)
     kmeans.fit(pca_df)
     wcss.append(kmeans.inertia_)
 
-# plot elbow method
-fig_elbow = plt.figure()
-plt.plot(range(1, 11), wcss, marker='o')
-plt.title('Elbow Method for Optimal Number of Clusters')
-plt.xlabel('Number of clusters')
-plt.ylabel('WCSS')
-st.pyplot(fig_elbow)
+# Prepare data for Altair
+df_wcss = pd.DataFrame({
+    'Number of clusters': range(1, 11),
+    'WCSS': wcss
+})
+
+# Create Altair chart
+chart = alt.Chart(df_wcss).mark_line().encode(
+    x=alt.X('Number of clusters:O', title='Number of clusters'),
+    y=alt.Y('WCSS:Q', title='WCSS'),
+    tooltip=['Number of clusters', 'WCSS']
+).properties(
+    title='Elbow Method for Optimal Number of Clusters'
+) + alt.Chart(df_wcss).mark_point().encode(
+    x=alt.X('Number of clusters:O'),
+    y=alt.Y('WCSS:Q')
+)
+
+# Display chart in Streamlit
+st.altair_chart(chart, use_container_width=True)
 
 st.markdown('From the elbow method, we can see that the optimal number of clusters is 3. Let\'s see how the clusters look like.')
 
