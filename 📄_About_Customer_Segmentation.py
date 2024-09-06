@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 import plotly.express as px
-import plotly.graph_objects as go
 import altair as alt
 
 # feature engineering, selection + preprocessing tools
@@ -16,11 +13,6 @@ from datetime import datetime
 
 # models
 from sklearn.cluster import KMeans
-from sklearn.pipeline import make_pipeline
-from sklearn.compose import ColumnTransformer
-
-# metrics
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 st.header('Customer Personality Segmentation')
 st.subheader('About the project')
