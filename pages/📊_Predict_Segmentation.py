@@ -6,13 +6,12 @@ import streamlit as st
 with open('.pkl/pipeline.pkl', 'rb') as pickle_in:
     pipeline = pkl.load(pickle_in)
 
-st.title('Customer Classification Prediction')
-
+st.title('Customer Personality Segmentation Prediction')
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.success(
-        "Cluster 0 (Green):\n"
+        "**Cluster 0**:\n"
         "- Income: `$40,000` - `$70,000`, with some outliers.\n"
         "- Spending: `$500` - `$1,000`; moderate engagement.\n"
         "- Age: Peaks around 50 years.\n"
@@ -22,7 +21,7 @@ with col1:
 
 with col2:
     st.warning(
-        "Cluster 1 (Orange):\n"
+        "**Cluster 1**:\n"
         "- Income: Above `$70,000`.\n"
         "- Spending: `$1,000` - `$2,000`; high engagement.\n"
         "- Age: Peaks around 40-50 years.\n"
@@ -32,13 +31,14 @@ with col2:
 
 with col3:
     st.info(
-        "Cluster 2 (Blue):\n"
+        "**Cluster 2 (Blue)**:\n"
         "- Income: `$0` - `$40,000`.\n"
         "- Spending: Under `$500`; least spending.\n"
         "- Age: Broad range, with many under 40 years.\n"
         "\n "
         "\n "
     )
+st.markdown('Please input the customer data below:')
 Education = st.selectbox('What is your education level?', ['Graduated', 'PhD', 'Master', 'Basic'])
 Marital_Status = st.selectbox('What is your marital status?', ['Single', 'In a Relationship'])
 Income = st.number_input('What is your income?', min_value=0.0)
